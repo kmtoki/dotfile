@@ -4,7 +4,7 @@
 "" General
 set gui=none
 
-colorscheme simplicity
+colorscheme concise
 
 set focuscontent
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
@@ -57,6 +57,7 @@ qmark h http://www.hulu.jp
 qmark r http://radiko.jp
 qmark s http://store.steampowered.com
 qmark v http://www.netflix.com
+qmark g https://github.com
 
 "" Ignore URL
 ignorekeys add mail\\.google\\.com
