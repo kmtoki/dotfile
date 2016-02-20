@@ -1,16 +1,12 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+### init zsh
 
-# Source Prezto.
+## Prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+
+## Paths
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin
 
 export PATH=$PATH:$HOME/.cabal/bin
@@ -24,11 +20,13 @@ export PATH=$PATH:/$HOME/.go/bin
 export C_INCLUDE_PATH=/usr/local/include
 export LD_LIBLARY_PATH=/usr/local/lib
 
-unsetopt correct_all
 
-bindkey "^P" history-beginning-search-backward
-bindkey "^N" history-beginning-search-forward
+## Prompt
+PROMPT="%(?,%F{green},%F{red}) %~ %f
+> "
 
+
+## Alias
 alias ll='ls -al'
 alias t='tree'
 alias v='nvim'
@@ -40,5 +38,11 @@ alias psps='ps -Ao pid,%cpu,%mem,comm | perl -ne"print if $. > 1" | sort -k 3'
 
 alias free='du -sx / &> /dev/null & sleep 25 && kill $!'
 
-#PROMPT="%(?,%F{green},%F{red}) %~ %f
-#> "
+
+## Keymaps
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
+
+
+## Options
+unsetopt correct_all
