@@ -17,13 +17,18 @@ Plug 'croaker/mustang-vim'
 Plug 'morhetz/gruvbox'
 
 "" Languages
-"Rust
+" Rust
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/rust-doc.vim'
+
+" TOML
 Plug 'cespare/vim-toml'
 
-"LLVM IR
-Plug 'Superbil/llvm.vim'
+" Swift
+Plug 'keith/swift.vim'
+
+" LLVM IR
+"Plug 'Superbil/llvm.vim'
 
 call plug#end()
 
@@ -65,7 +70,6 @@ vnoremap <silent> z/ <Esc>/\v%V
 vnoremap <silent> z? <Esc>?\v%V
 
 """ Colors
-syntax enable
 set background=dark
 colorscheme hybrid
 
@@ -79,9 +83,6 @@ hi Search cterm=NONE ctermfg=NONE ctermbg=237
 "hi PmenuSel   ctermfg=white ctermbg=darkblue
 "hi PmenuThumb ctermbg=darkblue
 "hi PmenuSbar  ctermbg=gray
-
-"""" Filetypes
-filetype plugin indent on
 
 """ Plugins
 "" lightline
@@ -123,3 +124,4 @@ augroup END
 augroup filetype
 au! BufRead,BufNewFile *.td set filetype=tablegen
 augroup END
+
