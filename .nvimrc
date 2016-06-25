@@ -32,6 +32,7 @@ Plug 'keith/swift.vim'
 
 call plug#end()
 
+
 """ Sets
 set hidden
 set noswapfile
@@ -54,10 +55,9 @@ set imdisable
 set statusline=%<\ %n\ %t\ %m\ %r%h%w%=\ \|\ %{&fenc!=''?&fenc:&enc}\ %{&ff}\ %{&filetype}\ \|\ %l/%LL\ %2vC\ %3p%%
 set ruler
 set rulerformat=%40(%=%t%h%m%r%w%<\ (%n)\ %4.7l,%-7.(%c%V%)\ %P%)
+set belloff=all
 
 """ Maps
-nnoremap j gj
-nnoremap k gk
 nnoremap <C-c> <ESC>
 nnoremap <silent> <C-c><C-c> :nohlsearch<CR>
 
@@ -65,9 +65,6 @@ cnoremap <C-a> <C-b>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Del>
-
-vnoremap <silent> z/ <Esc>/\v%V
-vnoremap <silent> z? <Esc>?\v%V
 
 """ Colors
 set background=dark
@@ -125,3 +122,6 @@ augroup filetype
 au! BufRead,BufNewFile *.td set filetype=tablegen
 augroup END
 
+"" Go
+autocmd FileType go :highlight goErr ctermfg=red
+autocmd FileType go :match goErr /\<[eE]rr\>/

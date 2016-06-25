@@ -11,6 +11,7 @@ set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set complete=sl
 set hlsearch=false
 
+set statuslinevisibility=visible
 set status=input,history,tabcount,bookmark,position
 
 "" Key Maps
@@ -81,9 +82,7 @@ commands.addUserCommand(
   {},
   false
 );
-EOF
 
-js <<EOF
 commands.addUserCommand(
   ["feedly"],
   "add rss to feedly", 
