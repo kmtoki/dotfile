@@ -7,9 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'Shougo/vimproc'
 Plug 'thinca/vim-quickrun'
-Plug 'Shougo/vinarise'
 Plug 'itchyny/lightline.vim'
-Plug 'rhysd/clever-f.vim'
 
 "" Colors
 Plug 'w0ng/vim-hybrid'
@@ -108,7 +106,15 @@ let g:quickrun_config = {
 \   "outputter/buffer/split" : "botright 5sp",
 \   "outputter/buffer/close_on_empty" : 1
 \   },
+\ "haskell": { "type": "haskell/stack" },
+\ "haskell/stack": {
+\   "command": "stack",
+\   "exec": "%c %o %s %a",
+\   "cmdopt": "runghc"
+\   }
 \ }
+
+nnoremap <Leader>c :call quickrun#sweep_sessions()<CR>
 
 "" Rust
 let g:rust_recommended_style = 0

@@ -22,21 +22,23 @@ export LD_LIBLARY_PATH=/usr/local/lib
 
 
 ## Prompt
-PROMPT="%(?,%F{green},%F{red}) %~ %f
-> "
+#PROMPT="%(?,%F{green},%F{red}) %~ %f
+#> "
+prompt pure
 
 
 ## Alias
-alias ll='ls -al'
-alias t='tree'
-alias v='nvim'
-
-alias alc='eijiro'
-
-alias psp='ps -o pid,%cpu,%mem,comm | perl -ne"print if $. > 1" | sort -k 3'
-alias psps='ps -Ao pid,%cpu,%mem,comm | perl -ne"print if $. > 1" | sort -k 3'
-
+alias g="google"
+alias ghc="stack ghc"
+alias ghci="stack ghci"
+alias runghc="stack runghc"
+alias ir="ri"
 alias free='du -sx / &> /dev/null & sleep 25 && kill $!'
+
+function psp {
+  ps -axo "pid %cpu %mem comm" |
+    perl -anE '$F[3] =~ s!.+/([^/ ]+)$!$1!; say join "\t",@F[0..3]'
+}
 
 
 ## Keymaps

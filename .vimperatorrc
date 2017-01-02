@@ -54,11 +54,10 @@ qmark f http://www.feedly.com
 qmark n http://www.nicovideo.jp/my/top
 qmark h http://www.hulu.jp
 qmark y https://www.youtube.com
-qmark h http://www.hulu.jp
 qmark r http://radiko.jp
-qmark s http://store.steampowered.com
-qmark v http://www.netflix.com
+qmark x http://www.netflix.com
 qmark g https://github.com
+qmark q http://qiita.com
 
 "" Ignore URL
 ignorekeys add mail\\.google\\.com
