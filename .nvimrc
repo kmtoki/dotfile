@@ -12,7 +12,8 @@ Plug 'itchyny/lightline.vim'
 "" Colors
 Plug 'w0ng/vim-hybrid'
 Plug 'croaker/mustang-vim'
-Plug 'morhetz/gruvbox'
+Plug 'romainl/Apprentice'
+Plug 'AlessandroYorba/Alduin'
 
 "" Languages
 " Rust
@@ -27,6 +28,9 @@ Plug 'keith/swift.vim'
 
 " LLVM IR
 "Plug 'Superbil/llvm.vim'
+
+" Eve
+Plug 'frankier/vim-eve'
 
 call plug#end()
 
@@ -63,6 +67,8 @@ cnoremap <C-a> <C-b>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Del>
+
+nnoremap <M-^> :bn<CR>
 
 """ Colors
 set background=dark
@@ -131,3 +137,12 @@ augroup END
 "" Go
 autocmd FileType go :highlight goErr ctermfg=red
 autocmd FileType go :match goErr /\<[eE]rr\>/
+
+"" Ruby
+
+augroup filetype
+au! BufRead,BufNewFile *.gemspecs set filetype=ruby
+au! BufRead,BufNewFile RakeFile set filetype=ruby
+au! BufRead,BufNewFile Gemfile set filetype=ruby
+augroup END
+

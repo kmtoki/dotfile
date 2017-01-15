@@ -29,15 +29,20 @@ prompt pure
 
 ## Alias
 alias g="google"
+alias w="wikipedia"
 alias ghc="stack ghc"
 alias ghci="stack ghci"
 alias runghc="stack runghc"
 alias ir="ri"
-alias free='du -sx / &> /dev/null & sleep 25 && kill $!'
 
 function psp {
   ps -axo "pid %cpu %mem comm" |
-    perl -anE '$F[3] =~ s!.+/([^/ ]+)$!$1!; say join "\t",@F[0..3]'
+  perl -anE '$F[3] =~ s!.+/([^/ ]+)$!$1!; say join "\t",@F[0..3]' |
+  sort -n -k 1
+}
+
+function ql {
+  qlmanage -p $* &> /dev/null
 }
 
 
