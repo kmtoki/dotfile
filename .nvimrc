@@ -60,6 +60,8 @@ set rulerformat=%40(%=%t%h%m%r%w%<\ (%n)\ %4.7l,%-7.(%c%V%)\ %P%)
 set belloff=all
 
 """ Maps
+nnoremap ; :
+nnoremap : ;
 nnoremap <C-c> <ESC>
 nnoremap <silent> <C-c><C-c> :nohlsearch<CR>
 
@@ -126,23 +128,20 @@ nnoremap <Leader>c :call quickrun#sweep_sessions()<CR>
 let g:rust_recommended_style = 0
 
 "" LLVM
-augroup filetype
-au! BufRead,BufNewFile *.ll set filetype=llvm
-augroup END
+au BufRead,BufNewFile *.ll set filetype=llvm
 
-augroup filetype
-au! BufRead,BufNewFile *.td set filetype=tablegen
-augroup END
+au BufRead,BufNewFile *.td set filetype=tablegen
 
 "" Go
-autocmd FileType go :highlight goErr ctermfg=red
-autocmd FileType go :match goErr /\<[eE]rr\>/
+au FileType go :highlight goErr ctermfg=red
+au FileType go :match goErr /\<[eE]rr\>/
 
 "" Ruby
+au BufRead,BufNewFile *.gemspecs set filetype=ruby
+au BufRead,BufNewFile RakeFile set filetype=ruby
+au BufRead,BufNewFile Gemfile set filetype=ruby
 
-augroup filetype
-au! BufRead,BufNewFile *.gemspecs set filetype=ruby
-au! BufRead,BufNewFile RakeFile set filetype=ruby
-au! BufRead,BufNewFile Gemfile set filetype=ruby
-augroup END
-
+"" Lisp
+au FileType lisp set nocindent
+au FileType lisp set lisp
+au FileType lisp set lispwords=
