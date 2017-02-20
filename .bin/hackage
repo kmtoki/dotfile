@@ -1,0 +1,6 @@
+#!/bin/zsh
+if [ "$1" = "" ]; then
+  echo "usage: hackage <package-name>"
+else
+  open "https://hackage.haskell.org/packages/search?terms=${1}"
+fi
