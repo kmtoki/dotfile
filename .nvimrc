@@ -8,12 +8,15 @@ Plug 'junegunn/vim-plug'
 Plug 'Shougo/vimproc'
 Plug 'thinca/vim-quickrun'
 Plug 'itchyny/lightline.vim'
+Plug 'kmtoki/lightline-colorscheme-simplicity'
+Plug 'rhysd/clever-f.vim'
 
 "" Colors
 Plug 'w0ng/vim-hybrid'
 Plug 'croaker/mustang-vim'
 Plug 'romainl/Apprentice'
 Plug 'AlessandroYorba/Alduin'
+Plug 'dracula/vim'
 
 "" Languages
 " Rust
@@ -31,6 +34,12 @@ Plug 'keith/swift.vim'
 
 " Eve
 Plug 'frankier/vim-eve'
+
+" Fish
+Plug 'dag/vim-fish'
+
+" Nim
+Plug 'baabelfish/nvim-nim'
 
 call plug#end()
 
@@ -90,7 +99,7 @@ hi Search cterm=NONE ctermfg=NONE ctermbg=237
 """ Plugins
 "" lightline
 let g:lightline = {
-\ 'colorscheme': 'concise',
+\ 'colorscheme': 'simplicity',
 \ 'component': { 'readonly': "%{ &readonly ? '' : '' }" },
 \ 'separator': { 'left': '', 'right': '' },
 \ 'subseparator': { 'left': '', 'right': '' }
@@ -119,6 +128,9 @@ let g:quickrun_config = {
 \   "command": "stack",
 \   "exec": "%c %o %s %a",
 \   "cmdopt": "runghc"
+\   },
+\ "rust": {
+\   "cmdopt": "-A unused",
 \   }
 \ }
 

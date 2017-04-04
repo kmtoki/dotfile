@@ -1,10 +1,15 @@
-### init zsh
 
-## Prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# zplug
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
+zplug "sorin-ionescu/prezto", use:init.zsh
+zplug "b4b4r07/enhancd", use:init.sh
+
+zplug load
+
+# rustup
+source ~/.cargo/env
 
 ## Paths
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin
@@ -28,11 +33,14 @@ prompt pure
 
 
 ## Alias
+alias v="nvim"
 alias g="google"
 alias w="wikipedia"
 alias ghc="stack ghc"
 alias ghci="stack ghci"
 alias runghc="stack runghc"
+alias haskell="stack runghc"
+alias hoogle="stack exec hoogle"
 alias ir="ri"
 
 function psp {
