@@ -17,6 +17,7 @@ Plug 'croaker/mustang-vim'
 Plug 'romainl/Apprentice'
 Plug 'AlessandroYorba/Alduin'
 Plug 'dracula/vim'
+Plug 'AlessandroYorba/Sidonia'
 
 "" Languages
 " Rust
@@ -40,6 +41,12 @@ Plug 'dag/vim-fish'
 
 " Nim
 Plug 'baabelfish/nvim-nim'
+
+" Arduino
+Plug 'sudar/vim-arduino-syntax'
+
+" Haskell
+"Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 
@@ -73,6 +80,7 @@ nnoremap ; :
 nnoremap : ;
 nnoremap <C-c> <ESC>
 nnoremap <silent> <C-c><C-c> :nohlsearch<CR>
+nnoremap * *N
 
 cnoremap <C-a> <C-b>
 cnoremap <C-f> <Right>
@@ -138,6 +146,12 @@ nnoremap <Leader>c :call quickrun#sweep_sessions()<CR>
 
 "" Rust
 let g:rust_recommended_style = 0
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
+au BufRead,BufNewFile *.rs set filetype=rust
+""au BufRead,BufNewFile *.rs set tabstop=4
+""au BufRead,BufNewFile *.rs set shiftwidth=4
+""au BufRead,BufNewFile *.rs set softtabstop=4
 
 "" LLVM
 au BufRead,BufNewFile *.ll set filetype=llvm
