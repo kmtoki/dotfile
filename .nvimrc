@@ -10,6 +10,10 @@ Plug 'thinca/vim-quickrun'
 Plug 'itchyny/lightline.vim'
 Plug 'kmtoki/lightline-colorscheme-simplicity'
 Plug 'rhysd/clever-f.vim'
+Plug 'osyo-manga/vim-watchdogs'
+Plug 'osyo-manga/shabadou.vim'
+Plug 'jceb/vim-hier'
+Plug 'dannyob/quickfixstatus'
 
 "" Colors
 Plug 'w0ng/vim-hybrid'
@@ -20,6 +24,7 @@ Plug 'dracula/vim'
 Plug 'AlessandroYorba/Sidonia'
 
 "" Languages
+
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/rust-doc.vim'
@@ -139,10 +144,24 @@ let g:quickrun_config = {
 \   },
 \ "rust": {
 \   "cmdopt": "-A unused",
+\   "watchdogs_checker": {
+\	    "type" : "watchdogs_checker/rust",
+\     "cmdopt": "-A unused"
+\     }
 \   }
 \ }
 
-nnoremap <Leader>c :call quickrun#sweep_sessions()<CR>
+nnoremap <Leader>q :call quickrun#sweep_sessions()<CR>
+
+"" Watchdogs
+let g:watchdogs_check_BufWritePost_enable = 1
+let g:watchdogs_check_BufWritePost_enable_on_wq = 0
+let g:quickrun_config["rust/watchdogs_checker"] = {
+\  "type" : "watchdogs_checker/rustc",
+\  "cmdopt" : "-A unused",
+\ }
+
+call watchdogs#setup(g:quickrun_config)
 
 "" Rust
 let g:rust_recommended_style = 0
