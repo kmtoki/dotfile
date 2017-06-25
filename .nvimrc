@@ -10,10 +10,11 @@ Plug 'thinca/vim-quickrun'
 Plug 'itchyny/lightline.vim'
 Plug 'kmtoki/lightline-colorscheme-simplicity'
 Plug 'rhysd/clever-f.vim'
-Plug 'osyo-manga/vim-watchdogs'
-Plug 'osyo-manga/shabadou.vim'
-Plug 'jceb/vim-hier'
-Plug 'dannyob/quickfixstatus'
+Plug 'vim-syntastic/syntastic'
+"Plug 'osyo-manga/vim-watchdogs'
+"Plug 'osyo-manga/shabadou.vim'
+"Plug 'jceb/vim-hier'
+"Plug 'dannyob/quickfixstatus'
 
 "" Colors
 Plug 'w0ng/vim-hybrid'
@@ -124,6 +125,14 @@ command! -nargs=1 -complete=custom,ListLLCS LightlineColorscheme
 \ | call lightline#colorscheme()
 \ | call lightline#update()
 
+"" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
+let g:syntastic_rust_checkers = ['rustc'] 
+
 function! ListLLCS(A,L,P)
 return system("ls $HOME/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/ | perl -pe 's/(.+)\.vim/$1/' ")
 endfunction
@@ -153,24 +162,14 @@ let g:quickrun_config = {
 
 nnoremap <Leader>q :call quickrun#sweep_sessions()<CR>
 
-"" Watchdogs
-let g:watchdogs_check_BufWritePost_enable = 1
-let g:watchdogs_check_BufWritePost_enable_on_wq = 0
-let g:quickrun_config["rust/watchdogs_checker"] = {
-\  "type" : "watchdogs_checker/rustc",
-\  "cmdopt" : "-A unused",
-\ }
-
-call watchdogs#setup(g:quickrun_config)
-
 "" Rust
 let g:rust_recommended_style = 0
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
 au BufRead,BufNewFile *.rs set filetype=rust
-""au BufRead,BufNewFile *.rs set tabstop=4
-""au BufRead,BufNewFile *.rs set shiftwidth=4
-""au BufRead,BufNewFile *.rs set softtabstop=4
+"au BufRead,BufNewFile *.rs set tabstop=4
+"au BufRead,BufNewFile *.rs set shiftwidth=4
+"au BufRead,BufNewFile *.rs set softtabstop=4
 
 "" LLVM
 au BufRead,BufNewFile *.ll set filetype=llvm
