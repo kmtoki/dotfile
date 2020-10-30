@@ -96,10 +96,11 @@
         { "command": "scrollUp", "keys": ["ctrl+up"] },
         { "command": "scrollDown", "keys": ["ctrl+down"] },
         { "command": "scrollUpPage", "keys": ["alt+up"] },
-        { "command": "scrollDownPage", "keys": ["alt+down"] }
+        { "command": "scrollUpPage", "keys": ["pageup"] },
+        { "command": "scrollDownPage", "keys": ["alt+down"] },
+        { "command": "scrollDownPage", "keys": ["pagedown"] }
     ],
 
     "scrollbarState": "visible",
     "historySize": 30000
-
 }
