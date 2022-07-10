@@ -46,24 +46,11 @@ alias ghci="stack ghci"
 alias runghc="stack runghc"
 alias haskell="stack runghc"
 alias hoogle="stack exec hoogle"
-alias ir="ri"
 
 function psp {
   ps -axo "pid %cpu %mem comm" |
   perl -anE '$F[3] =~ s!.+/([^/ ]+)$!$1!; say join "\t",@F[0..3]' |
   sort -n -k 1
-}
-
-function ql {
-  qlmanage -p $* &> /dev/null
-}
-
-function r {
-  ruby -e "p ("$*")"
-}
-
-function rr {
-  ruby -e $*
 }
 
 ## Keymaps

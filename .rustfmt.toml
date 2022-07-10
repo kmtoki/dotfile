@@ -1,4 +1,4 @@
-max_width = 80
+max_width = 100
 tab_spaces = 2
 spaces_around_ranges = true
 array_layout = "Block"
