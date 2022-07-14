@@ -91,17 +91,15 @@ endif
 
 let mapleader = "\<Space>"
 
-noremap <Leader>l :tabnext <CR>
-noremap <Leader>h :tabprevious <CR>
+noremap <Leader>l :tabnext<CR>
+noremap <Leader>h :tabprevious<CR>
 noremap <Leader>j :bnext<CR>
 noremap <Leader>k :bprevious<CR>
 noremap <Leader>r a<C-r>=
 noremap <Leader>y "zy
 noremap <Leader>p "zp
-nnoremap <silent> <C-h> <<
-nnoremap <silent> <C-l> >>
-"nnoremap <tab>   <c-w>w
-"nnoremap <S-tab> <c-w>W
+nnoremap <tab>   :tabnext<CR>
+nnoremap <C-tab> :tabprevious<CR>
 
 nnoremap ; :
 nnoremap : ;
@@ -169,3 +167,10 @@ function BlogUpload()
   let l:cmd = "git add " . g:blog_md . " && git commit -m 'new md' && git push && node md/hatenaPost.js " . g:blog_md
   echo system(l:cmd)
 endfunction
+
+"command! -nargs=1 Bin call OpenBinary(<f-args>)
+"function OpenBinary(file)
+"	setlocal display=uhex
+"	execute ":tabe  ". file
+"	execute "%!xxd"
+"endfunction
