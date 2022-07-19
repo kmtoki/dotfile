@@ -177,6 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 void matrix_init_user(void) {
   set_unicode_input_mode(UC_WINC);
+  set_single_persistent_default_layer(_QWERTY);
 }
 
 
@@ -186,6 +187,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
+        if (is_nicola) {
+          layer_off(_NICOLA);
+        }
         is_nicola = false;
         is_ime = false;
         set_single_persistent_default_layer(_QWERTY);
@@ -227,7 +231,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         is_nicola = true;
         is_ime = true;
-        set_single_persistent_default_layer(_NICOLA);
+        layer_on(_NICOLA);
         tap_code(KC_LANG1);
         tap_code(KC_HENK);
       }
@@ -255,11 +259,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_RGUI:
     case KC_RSFT:
       if (is_nicola) {
+        // TODO: Doen't work
         if (record->event.pressed) {
+          layer_off(_NICOLA);
           layer_on(_QWERTY);
         }
         else {
           layer_off(_QWERTY);
+          layer_on(_NICOLA);
         }
       }
       return true;
