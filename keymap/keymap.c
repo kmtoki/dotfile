@@ -259,7 +259,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_RGUI:
     case KC_RSFT:
       if (is_nicola) {
-        // TODO: Doen't work
         if (record->event.pressed) {
           layer_off(_NICOLA);
           layer_on(_QWERTY);
