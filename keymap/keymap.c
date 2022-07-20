@@ -146,9 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_NICOLA_L] = LAYOUT_preonic_grid( \
   _______, FL_QM,   FL_SOL,  FL_TILD, JP_LCB,  JP_RCB,  FL_LSB,  FL_RSB,  FL_LP,   FL_RP,   FL_LL,   _______, \
-  _______, JP_XA,   JP_E,    JP_RI,   JP_XYA,  JP_RE,   JP_PO,   JP_DI,   JP_GU,   JP_DA,   JP_PE,   _______, \
+  _______, JP_XA,   JP_E,    JP_RI,   JP_XYA,  JP_RE,   JP_PA,   JP_DI,   JP_GU,   JP_DU,   JP_PI,   _______, \
   _______, JP_WO,   JP_A,    JP_NA,   JP_XYU,  JP_MO,   JP_BA,   JP_DO,   JP_GI,   JP_PO,   JP_XTU,  _______, \
-  _______, JP_XU,   JP_MINS, JP_RO,   JP_YA,   JP_XI,   JP_PU,   JP_ZO,   JP_PE,   JP_GO,   JP_XO,   _______, \
+  _______, JP_XU,   JP_MINS, JP_RO,   JP_YA,   JP_XI,   JP_PU,   JP_ZO,   JP_PE,   JP_BO,   JP_XO,   _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 

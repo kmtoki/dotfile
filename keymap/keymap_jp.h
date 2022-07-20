@@ -60,6 +60,7 @@
 #define JP_DI     X(HL_DI)
 #define JP_XTU    X(HL_XTU)
 #define JP_TU     X(HL_TU)
+#define JP_DU     X(HL_ZTU)
 #define JP_ZTU    X(HL_ZTU)
 #define JP_TE     X(HL_TE)
 #define JP_DE     X(HL_DE)
