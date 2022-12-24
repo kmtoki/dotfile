@@ -4,13 +4,9 @@ Set-PSReadlineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
-function prompt {
-  "`e[34m$($pwd.path)`e[0m`n> "
-}
-
-Set-Alias v gvim
-Set-Alias e gvim
-Set-Alias chrome Start-Chrome
+Set-Alias e nvim
+Set-Alias v goneovim
+Set-Alias c Start-Chrome
 
 chcp 65001 >> 0
 [System.Console]::OutputEncoding = [System.Text.Encoding]::GetEncoding("utf-8")
