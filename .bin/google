@@ -1,6 +1,0 @@
-#!/bin/zsh
-if [ $# = 0 ]; then
-  echo "usage: google <words>"
-else
-  w3m "https://www.google.co.jp/search?q=${1}"
-fi

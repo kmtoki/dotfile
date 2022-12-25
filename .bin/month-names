@@ -1,1 +1,0 @@
-ruby -rdate -e'(1..12).each{|i|printf"%2d %s\n",i,Date::MONTHNAMES[i]}'

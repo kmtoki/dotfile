@@ -1,5 +1,5 @@
 max_width = 100
-tab_spaces = 2
+tab_spaces = 4
 spaces_around_ranges = true
 array_layout = "Block"
 chain_indent = "Block"

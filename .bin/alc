@@ -1,6 +1,0 @@
-#!/bin/bash
-#requires: curl pup w3m
-
-declare url='http://eow.alc.co.jp/search?q='
-
-curl -s "$url$@" | pup "div#resultsList ul" | w3m -T text/html

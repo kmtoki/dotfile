@@ -1,6 +1,0 @@
-#!/bin/zsh
-if [ $# = 0 ]; then
-  echo "usage: wikipedia <words>"
-else
-  w3m "https://ja.wikipedia.org/wiki/${1}"
-fi

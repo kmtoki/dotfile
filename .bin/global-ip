@@ -1,2 +1,0 @@
-#!/bin/bash
-wget -q -O - ipcheck.ieserver.net
