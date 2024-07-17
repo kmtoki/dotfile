@@ -95,8 +95,8 @@ noremap <Leader>l :tabnext<CR>
 noremap <Leader>h :tabprevious<CR>
 noremap <Leader>j :bnext<CR>
 noremap <Leader>k :bprevious<CR>
-noremap <Leader>r a<C-r>=
-noremap <Leader>y "zy
+noremap <Leader>r o<C-r>=
+loremap <Leader>y "zy
 noremap <Leader>p "zp
 nnoremap <tab>   :tabnext<CR>
 nnoremap <C-tab> :tabprevious<CR>
@@ -109,6 +109,7 @@ nnoremap <C-c> <ESC>
 nnoremap <silent> <C-c><C-c> :nohlsearch<CR>
 nnoremap * *N
 
+nnoremap <C-c> <ESC>
 inoremap <F2> <C-R>=strftime("%Y_%m_%d")<CR>
 inoremap <C-v> <C-R>"
 inoremap <C-a> <Home>

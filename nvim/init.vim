@@ -10,7 +10,12 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'PProvost/vim-ps1'
 Plug 'ElmCast/elm-vim'
+Plug 'ziglang/zig.vim'
+Plug 'rust-lang/rust.vim'
 call plug#end()
+
+
+let g:zig_fmt_autosave = 0
 
 
 color hybrid
@@ -68,36 +73,38 @@ if has('win32')
   "set shell=pwsh
 
   " zenhan. https://github.com/iuchim/zenhan
-  function IMEToggle(bool)
-    if a:bool
-      "call system(["zenhan", g:ime_state])
-    else
-      "let g:ime_state = system(["zenhan"])
-      call system(["zenhan", 0])
-    endif
-  endfunction
+  "function IMEToggle(bool)
+  "  if a:bool
+  "    "call system(["zenhan", g:ime_state])
+  "  else
+  "    "let g:ime_state = system(["zenhan"])
+  "    call system(["zenhan", 0])
+  "  endif
+  "endfunction
 
-  augroup IMEToggle
-    autocmd!
-    autocmd InsertEnter * call IMEToggle(v:true)
-    autocmd InsertLeave * call IMEToggle(v:false)
-  augroup END
+  "augroup IMEToggle
+  "  autocmd!
+  "  autocmd InsertEnter * call IMEToggle(v:true)
+  "  autocmd InsertLeave * call IMEToggle(v:false)
+  "augroup END
 endif
 
 
 let mapleader = "\<Space>"
 
-noremap <Leader>l :tabnext <CR>
-noremap <Leader>h :tabprevious <CR>
+noremap <Leader>l :tabnext<CR>
+noremap <Leader>h :tabprevious<CR>
 noremap <Leader>j :bnext<CR>
 noremap <Leader>k :bprevious<CR>
-noremap <Leader>r a<C-r>=
+noremap <Leader>r o<C-r>=
 noremap <Leader>y "zy
 noremap <Leader>p "zp
 nnoremap <silent> <C-h> <<
 nnoremap <silent> <C-l> >>
 "nnoremap <tab>   <c-w>w
 "nnoremap <S-tab> <c-w>W
+nnoremap <tab>   :tabnext<CR>                  
+nnoremap <S-tab> :tabprevious<CR> 
 
 nnoremap ; :
 nnoremap : ;
@@ -107,12 +114,14 @@ nnoremap <C-c> <ESC>
 nnoremap <silent> <C-c><C-c> :nohlsearch<CR>
 nnoremap * *N
 
+inoremap <C-c> <ESC>
 inoremap <F2> <C-R>=strftime("%Y_%m_%d")<CR>
 inoremap <C-v> <C-R>"
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 
 vnoremap ; :
+vnoremap <Leader>y "zy
 
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -140,27 +149,28 @@ tnoremap <C-h> <BS>
 
 augroup VimrcReload 
   autocmd!
-  autocmd BufWritePost  $MYVIMRC  so $MYVIMRC
+  autocmd BufWritePost  $MYVIMRC so $MYVIMRC
 augroup END
 
 
 command! MemoNew call MemoNew()
 function MemoNew()
-  let l:dir = $HOME . "\\box\\memo"
-  let l:file = strftime("md\\%Y_%m_%d_%H_%M.md")
+  let l:dir = $HOME . "\\OneDrive\\Memo"
+  let l:file = strftime("%Y_%m_%d_%H_%M.md")
   execute "cd " . l:dir
   execute "e " . l:file
 endfunction
 
 
 command! BlogNew call BlogNew()
+command! BlogUpload call BlogUpload()
 augroup Blog
   autocmd!
-  autocmd BufWritePost $HOME/box/github/blog/md/*.md call BlogUpload()
+  autocmd BufWritePost $HOME/Github/blog/md/*.md call BlogUpload()
 augroup END
 
 function BlogNew()
-  let l:dir = $HOME . "\\box\\github\\blog"
+  let l:dir = $HOME . "\\Github\\blog"
   let l:file = strftime("md\\%Y_%m_%d_%H_%M.md")
   let l:header = "---\ndate: " . strftime("%Y/%m/%d %H:%M") . "\ntitle: \ncategory: \n---\n"
   let g:blog_md = l:dir . "\\" . l:file

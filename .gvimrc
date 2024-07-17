@@ -1,4 +1,4 @@
-set guifont=Ricty_Diminished:h18:cSHIFTJIS
+set guifont=Ricty_Diminished:h17:cSHIFTJIS
 set guioptions=M
 set background=dark
 set visualbell t_vb=
