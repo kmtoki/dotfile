@@ -23,11 +23,10 @@ color hybrid
 
 scriptencoding=utf-8
 set fileencoding=utf-8
-set termencoding=utf-8
 let $LANG='ja_JP.UTF-8'
 
 set ambiwidth=double
-set listchars=tab:^\ ,trail:_,extends:>,precedes:<
+set listchars=multispace:\ ,tab:^\ ,trail:_,extends:>,precedes:<
 set visualbell t_vb=
 set statusline=%<\ %n\ %t\ %m\ %r%h%w%=\ \|\ %{&fenc!=''?&fenc:&enc}\ %{&ff}\ %{&filetype}\ \|\ %l/%LL\ %2vC\ %3p%%
 set rulerformat=%40(%=%t%h%m%r%w%<\ (%n)\ %4.7l,%-7.(%c%V%)\ %P%)
@@ -120,6 +119,7 @@ inoremap <C-v> <C-R>"
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 
+
 vnoremap ; :
 vnoremap <Leader>y "zy
 
@@ -153,12 +153,12 @@ augroup VimrcReload
 augroup END
 
 
-command! MemoNew call MemoNew()
-function MemoNew()
-  let l:dir = $HOME . "\\OneDrive\\Memo"
-  let l:file = strftime("%Y_%m_%d_%H_%M.md")
+command! PSLedgerCalc call PSLedgerCalc()
+function PSLedgerCalc()
+  let l:dir = expand("%:h")
+  let l:file = expand("%:f")
   execute "cd " . l:dir
-  execute "e " . l:file
+  echo system(["pwsh", l:dir."/Calc.ps1", l:file])
 endfunction
 
 
@@ -183,4 +183,28 @@ function BlogUpload()
   let l:cmd = "git add " . g:blog_md . " && git commit -m \"new md\" && git push && node md/hatenaPost.js " . g:blog_md
   echo l:cmd
   echo system(l:cmd)
+endfunction
+
+command! BlogInsertElapsedTimeTextSize call BlogInsertElapsedTimeTextSize()
+function BlogInsertElapsedTimeTextSize()
+  let l:time = matchstr(getline(2), '\d\+:\d\+')
+  let l:ts = split(time, ":")
+  let l:birth = str2nr(l:ts[0]) * 60 + str2nr(l:ts[1])
+  let l:ts = split(strftime("%X", localtime()), ":")
+  let l:now = str2nr(l:ts[0]) * 60 + str2nr(l:ts[1])
+  let l:size = GetTotalUtf8CharCount()
+  let l:info = printf("（%d分、 %d文字）", (l:now - l:birth), l:size)
+  execute ":normal i" . l:info
+endfunction
+
+function! GetTotalUtf8CharCount()
+  let total_chars = 0
+  let num_lines = line('$')
+
+  for i in range(1, num_lines)
+    let line_content = getline(i)
+    let total_chars += strchars(line_content)
+  endfor
+
+  return total_chars
 endfunction
