@@ -153,6 +153,8 @@ augroup VimrcReload
 augroup END
 
 
+command! ReplaceDoubleWidthSpace execute ":%s/　/ /g"
+
 command! PSLedgerCalc call PSLedgerCalc()
 function PSLedgerCalc()
   let l:dir = expand("%:h")
@@ -166,13 +168,13 @@ command! BlogNew call BlogNew()
 command! BlogUpload call BlogUpload()
 augroup Blog
   autocmd!
-  autocmd BufWritePost $HOME/Github/blog/md/*.md call BlogUpload()
+  autocmd BufWritePost $HOME/Github/kmtoki.github.io/content/blog/*.md call BlogUpload()
 augroup END
 
 function BlogNew()
-  let l:dir = $HOME . "\\Github\\blog"
-  let l:file = strftime("md\\%Y_%m_%d_%H_%M.md")
-  let l:header = "---\ndate: " . strftime("%Y/%m/%d %H:%M") . "\ntitle: \ncategory: \n---\n"
+  let l:dir = $HOME . "\\Github\\kmtoki.github.io"
+  let l:file = strftime("content\\blog\\%Y_%m_%d_%H_%M.md")
+  let l:header = "---\ndate: " . strftime("%Y-%m-%d %H:%M:%S") . "\ntitle: \ntags: \n---\n"
   let g:blog_md = l:dir . "\\" . l:file
   execute "cd " . l:dir
   execute "e " . l:file
@@ -180,7 +182,7 @@ function BlogNew()
 endfunction
 
 function BlogUpload()
-  let l:cmd = "git add " . g:blog_md . " && git commit -m \"new md\" && git push && node md/hatenaPost.js " . g:blog_md
+  let l:cmd = "git add " . g:blog_md . " && git commit -m \"new md\" && git push && node script/hatenaPost.js " . g:blog_md
   echo l:cmd
   echo system(l:cmd)
 endfunction
